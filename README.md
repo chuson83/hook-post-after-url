@@ -12,4 +12,4 @@ php: 5.6系
 ## セットアップ
 cloneしたフォルダ（hook-post-after-url）を/wp-content/plugins/下に設置します。  
 その後WordPress管理画面で有効化し、設定からURLを入力します。  
-記事公開時にそのURLにアクセスします。
+記事公開時、記事削除時にそのURLにアクセスします。
