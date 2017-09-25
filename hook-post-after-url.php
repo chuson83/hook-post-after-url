@@ -48,13 +48,23 @@ function curl_url($url){
     $post_title = get_the_title( $post_id );
     $post_url = get_permalink( $post_id );
     $content = get_post_field( 'post_content', $post_id );
-
+	$post_obj = get_post($post_id);
+	
     //cURLセッションを初期化する
     $ch = curl_init();
+	
+	// URLにguidを付与する
+	$param = array(
+		'guid' => $post_obj->guid,
+	);
+
+	$query_string = http_build_query( $param );
+	$url .= '?guid='.$query_string;
 
     //URLとオプションを指定する
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	
 
     //URLの情報を取得する
     $res =  curl_exec($ch);
