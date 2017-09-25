@@ -62,12 +62,16 @@ function curl_url($url){
 	$url .= '?guid='.$query_string;
 
     //URLとオプションを指定する
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	
-
+	curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt( $ch, CURLOPT_HEADER, false );
+    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, false );
+    curl_setopt( $ch, CURLOPT_TIMEOUT, 2);
+    
     //URLの情報を取得する
     $res =  curl_exec($ch);
+	
+	curl_close( $ch );
+	
 
     return $res;
 }
