@@ -63,6 +63,7 @@ function curl_url($url){
 }
 
 add_action('publish_post', 'hook_post_after_url');
+add_action('deleted_post', 'hook_post_after_url');
 
 /**
  * 設定用のクラスです。
